@@ -117,19 +117,18 @@
 
 \begin{abstract}
 %% Text of abstract
-Abstract Goes here.
+In class, both of scheduling algorithms and priority inheritance protocols in
+the context of a single processor were examined in details.  Nevertheless, the
+emergence and popularity of distributed computing system gave rise to the
+need to solve multi-processor scheduling and priority inheritance problems. 
+As the supplementary study, this paper surveys existing scheduling algorithms in
+the context of multiple processors. The very first sections outline the
+background of multi-processor scheduling problems, as well as system models,
+terminology, and the metrics of scheduling algorithms. Partitioned scheduling
+and global scheduling, as the focus of our research, will be fully explored.
+Moreover, we will give brief sketch to the hybrid approaches of partitioned
+scheduling and global scheduling. 
 
-0. Background and introduction
-
-1. System Models
-
-2. Partitioned Scheduling
-
-3. Global Scheduling
-
-4. Hybrid Approach
-
-5. Conclusion and Discussion
 \end{abstract}
 
 \begin{keyword}
@@ -152,12 +151,22 @@ System \sep Scheduling Algorithm \sep Task Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{S:1}
-0. Problem background. Motivation of research
+
+0. Background and introduction
+
+1. System Models
+
+2. Partitioned Scheduling
+
+3. Global Scheduling
+
+4. Hybrid Approach
+
+5. Conclusion and Discussion
 
 \subsection{Problem Defintion}
 
 \subsection{Preview Of Related works}
-
 
 \subsection{Paper Organization}
 
@@ -175,10 +184,33 @@ In this section, we will review some partitioned approaches to multiprocessor re
 \subsection{EDF-FF}
 \subsection{EDF-BF}
 \subsection{Comparision}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Global Scheduling} \label{S:3}
 
-In auctor ultrices elit, vel feugiat ligula aliquam sed. Curabitur aliquam elit sed dui rhoncus consectetur. Cras elit ipsum, lobortis a tempor at, viverra vitae mi. Cras sed urna sed eros bibendum faucibus. Morbi vel leo orci, vel faucibus orci. Vivamus urna nisl, sodales vitae posuere in, tempus vel tellus. Donec magna est, luctus non commodo sit amet, placerat et enim.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Global Scheduling} \label{S:3}
+In this section, we will review some global approaches to multiprocessor
+real-time scheduling.
+
+\subsection{Overview}
+% advantages (comparison to partitioned scheduling)
+
+% focus on global dynamic priority scheduling
+Although various categories of global scheduling algorithms, the focus of this
+paper is on the Global Dynamic Priority Scheduling. In the following
+subsection, it will be chacterized in details. 
+
+\subsection{Global Dynamic Priority Scheduling}
+In this subsection, we will present our in-depth exploration to the track of
+global dynamic priority scheduling algorithm. 
+
+\subsubsection{Proportionate Fairness Algorithms (PF)}
+The first and foremost one is 
+
+\subsubsection{LLREF}
+
+\subsubsection{EDZL}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Hybrid Approaches} \label{S:4}
 
