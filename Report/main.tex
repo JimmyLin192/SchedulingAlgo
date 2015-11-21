@@ -187,47 +187,22 @@ In this section, we will review some partitioned approaches to multiprocessor re
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Global Scheduling} \label{S:3}
-In this section, we will review some global approaches to multiprocessor
-real-time scheduling.
+In this section, we will dive into another branch of scheduling strategies --
+global approaches to multiprocessor real-time scheduling.
 
 \subsection{Overview}
 % what is global scheduling 
-
-% advantages (comparison to partitioned scheduling)
-The global scheduling paradigm has advantages over the partitioned approach. 
-First of all, if tasks can join and leave the system at run-time, then it may be
-necessary to reallocate tasks to processors in the partitioned approach.
-In addition, the partitioned approach cannot produce optimal
-real-time schedules -- one that meets all task deadlines
-when task utilization demand does not exceed the total processor
-capacity -- for periodic task sets, since the partitioning
-problem is analogous to the bin-packing problem which is known to be NP-hard
-in the strong sense. 
-On top of that, in some embedded processor architectures with no cache and
-simpler structures, the overhead of migration has a lower
-impact on the performance. 
-Finally, global scheduling can theoretically contribute to an increased
-understanding of the properties and behaviors of real-time scheduling
-algorithms for multiprocessors.
-
-% disadvantages
-The global scheduling paradigm has also several disadvantages, compared with
-the partitioned approach. 
-Firstly, global scheduling strategies are much more complicated to implement than
-partitioned scheduling. 
-In other words, for the partitioned approach, once a set of tasks are allocated
-to processors, the multiprocessor real-time scheduling problem becomes a
-collection of single processor real-time scheduling problems.  The ease of
-programming partitioned scheduling is obvious since the single processor
-scheduling problem has already been well-studied and optimal algorithms with
-easy implementations already exist.
-Secondly, migrating tasks at run-time means more runtime overhead in that
-migrating tasks may suffer cache misses on the newly assigned processor. If
-the task set is fixed and known in advanced, it is obvious that the partitioned
-approach provides more appropriate solutions.
+Global scheduling algorithms, as its name suggests, globally schedules any
+feasible periodic task set. In contrast to partitioned scheduling, global
+scheduling schedules jobs and tasks in one single shared queue instead of
+multiple local, dedicated queues. By this means, the automatic load balancing
+and lower average response time can be achieved by global approaches. In
+addition to this, global approaches also take advantages of the simpler
+implementations and the existence of optimal schedulers. 
 
 % catogries of global scheduling algorithms
-
+Global scheduling startegies include Global Fixed-Job-Priority Scheduling,
+Global Fixed-Task-Priority Scheduling, and Global Dynamic Priority Scheduling. 
 % focus on global dynamic priority scheduling
 Although there are various categories of global scheduling algorithms, the
 focus of this paper is on the Global Dynamic Priority Scheduling. In the
@@ -270,6 +245,37 @@ behavior on multiprocessors, called Time and Local Execution Time Domain
 Plane (T-L Plane).
 
 \subsection{Summary}
+% advantages (comparison to partitioned scheduling)
+The global scheduling paradigm has advantages over the partitioned approach. 
+First of all, if tasks can join and leave the system at run-time, then it may be
+necessary to reallocate tasks to processors in the partitioned approach.
+In addition, the partitioned approach cannot produce optimal
+real-time schedules -- one that meets all task deadlines
+when task utilization demand does not exceed the total processor
+capacity -- for periodic task sets, since the partitioning
+problem is analogous to the bin-packing problem which is known to be NP-hard
+in the strong sense. 
+On top of that, in some embedded processor architectures with no cache and
+simpler structures, the overhead of migration has a lower
+impact on the performance. 
+Finally, global scheduling can theoretically contribute to an increased
+understanding of the properties and behaviors of real-time scheduling
+algorithms for multiprocessors.
+
+% disadvantages
+However, the global scheduling paradigm has also several disadvantages. 
+Firstly, global scheduling strategies are much more complicated to implement than
+partitioned scheduling. 
+In other words, for the partitioned approach, once a set of tasks are allocated
+to processors, the multiprocessor real-time scheduling problem becomes a
+collection of single processor real-time scheduling problems.  The ease of
+programming partitioned scheduling is obvious since the single processor
+scheduling problem has already been well-studied and optimal algorithms with
+easy implementations already exist.
+Secondly, migrating tasks at run-time means more runtime overhead in that
+migrating tasks may suffer cache misses on the newly assigned processor. If
+the task set is fixed and known in advanced, it is obvious that the partitioned
+approach provides more appropriate solutions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
