@@ -46,7 +46,7 @@
 %% The amssymb package provides various useful mathematical symbols
 \usepackage{amssymb}
 %% The amsthm package provides extended theorem environments
-%% \usepackage{amsthm}
+\usepackage{amsthm}
 
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
@@ -232,11 +232,39 @@ First (LLREF).
 \subsubsection{PFair}
 Baruah et al \cite{baruah1996proportionate} introduced Proportionate Fairness
 Algorithm. 
-The Pfair class of algorithms that allow full migration
-and fully dynamic priorities have been shown to be theoretically
-optimal -- i.e., they achieve a schedulable utilization
-bound (below which all tasks meet their deadlines) that
-equals the total capacity of all processors.
+The Pfair class of algorithms that allow full migration and fully dynamic
+priorities have been shown to be theoretically optimal -- i.e., they achieve a
+schedulable utilization bound (below which all tasks meet their deadlines)
+that equals the total capacity of all processors. Here are some fundamental
+principles of Proportionate Fairness algorithms: 
+
+\begin{enumerate}
+    \item Timeline is divided into equal length slots. 
+    \item Task period and execution time are multiples of the slot size. 
+    \item Each task receives amount of slots proportional to its task
+        utilization. 
+\end{enumerate}
+
+The essential part of PFair algorithms is the quantum-based optimization
+defined over the lag of each task $lag(\tau_i, t)$, with the goal of
+minimizing the maximum lags of all tasks $\max_t|lag(\tau_i, t)|$.
+\begin{equation}
+    \underbrace{lag(\tau_i, t)}_{error} = 
+    \underbrace{t \cdot (\frac{c_i}{T_i})}_{fluid\ exectuion\ in [0,t)} 
+    - \underbrace{allocated(\tau_i, t)}_{real\ execution\ in [0,t)}
+\end{equation}
+The generation of an optimal schedule is based on the above definition of
+$lag$. PFair algorithm does execute all urgent tasks with $lag(\tau_i, t) > 0$
+and $lag(\tau_i, t +1) \geq 0$ if $\tau_i$ executes. 
+On top of that, PFair algorithm does not execute tnegru tasks, for which
+$lag(\tau_i, t) < 0$ and $lag(\tau_i, t+1) \leq 0$ if $\tau_i$ does not execute.  
+Besides, for other tasks, only those that have the least $t$ such that
+$lag(\tau_i,t) >0$ are executed.
+
+The PFair algorithm will assign priorities to tasks at every time slot, which
+indicated itself as one of job-level dynamic priority scheduling policies. 
+However, this characteristic gives rise to some issues, for example, frequent
+preemptions and frequent migrations.
 
 \subsubsection{LLREF}
 LLREF was firstly introduced by Cho et al \cite{cho2006optimal}. LLREF was
