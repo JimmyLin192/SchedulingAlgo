@@ -126,9 +126,9 @@ As the supplementary study, this paper surveys existing scheduling algorithms in
 the context of multiple processors. The very first section outlines the
 background of multi-processor scheduling problems, as well as system models,
 terminology, and the metrics of scheduling algorithms. After that, partitioned
-scheduling and global scheduling, as the focus of our research, will be fully
-explored. Moreover, we will also give brief sketch to the hybrid approaches of
-partitioned scheduling and global scheduling. 
+scheduling and global scheduling, as the primary objects of our research, will
+be fully explored. Moreover, we will also give brief sketch to the hybrid
+approaches of partitioned scheduling and global scheduling. 
 \end{abstract}
 
 \begin{keyword}
@@ -149,8 +149,7 @@ System \sep Scheduling Algorithm \sep Task Management
 
 %% main text
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-\label{S:1}
+\section{Introduction} \label{S:1}
 
 
 
@@ -192,23 +191,89 @@ In this section, we will review some global approaches to multiprocessor
 real-time scheduling.
 
 \subsection{Overview}
+% what is global scheduling 
+
 % advantages (comparison to partitioned scheduling)
+The partitioned scheduling paradigm has several advantages
+over the global approach. First, once tasks are allocated
+to processors, the multiprocessor real-time scheduling
+problem becomes a set of single processor real-time
+scheduling problems, one for each processor, which has
+been well-studied and for which optimal algorithms exist.
+Second, not migrating tasks at run-time means reduced runtime
+overhead as opposed to migrating tasks that may suffer
+cache misses on the newly assigned processor. If the task set
+is fixed and known a-priori, the partitioned approach provides
+appropriate solutions
+
+% disadvantages
+The global scheduling paradigm also has advantages,
+over the partitioned approach. First, if tasks can join and
+leave the system at run-time, then it may be necessary to reallocate
+tasks to processors in the partitioned approach [3].
+Second, the partitioned approach cannot produce optimal
+real-time schedules — one that meets all task deadlines
+when task utilization demand does not exceed the total processor
+capacity — for periodic task sets [14], since the partitioning
+problem is analogous to the bin-packing problem
+which is known to be NP-hard in the strong sense. Third, in
+some embedded processor architectures with no cache and
+simpler structures, the overhead of migration has a lower
+impact on the performance [3]. Finally, global scheduling
+can theoretically contribute to an increased understanding
+of the properties and behaviors of real-time scheduling algorithms
+for multiprocessors.
+
+% catogries of global scheduling algorithms
 
 % focus on global dynamic priority scheduling
-Although various categories of global scheduling algorithms, the focus of this
-paper is on the Global Dynamic Priority Scheduling. In the following
-subsection, it will be chacterized in details. 
+Although there are various categories of global scheduling algorithms, the
+focus of this paper is on the Global Dynamic Priority Scheduling. In the
+following subsection, it will be chacterized in details. 
 
 \subsection{Global Dynamic Priority Scheduling}
 In this subsection, we will present our in-depth exploration to the track of
-global dynamic priority scheduling algorithm. 
+global dynamic priority scheduling algorithm. To the best of our knowledge, a
+number of global dynamic priority scheduling algorithms are optimal for
+periodic tasksets with explicit or implicit deadlines.
+For example, Proportionate Fairness algorithm and its variants including PD,
+PD$^2$, ERFair, BF, SA \cite{khemka1997optimal}, and LLREF
+\cite{cho2006optimal} as well, are all optimal for offline environment.
+Nevertheless, no algorithms until now are optimal to cope with online
+preemptive scheduling problem, where tasksets are sporadic and multi-processor
+environments are enforced.
+On the other hand, despite of its optimality and dominance in theory, the
+usage of global dynamic priority algorithms are limited in practice. This is
+because the existence of frequent preemption and migration between tasks gives
+rise to excessive overheads in potential. 
 
-\subsubsection{Proportionate Fairness Algorithms (PF)}
-The first and foremost one is 
+The following part of this subsection will provide brief summary of three
+classic global dynamic priority scheduling algorithms. They are respectively 
+Proportionate Fairness Algorithm (PFair),  Largest Local Remaining Execution
+First (LLREF), and Earliest Deadline until Zero Laxity (EDZL). 
+
+\subsubsection{PFair}
+Baruah et al \cite{baruah1996proportionate} introduced Proportionate Fairness
+Algorithm. 
+The Pfair class of algorithms that allow full migration
+and fully dynamic priorities have been shown to be theoretically
+optimal -- i.e., they achieve a schedulable utilization
+bound (below which all tasks meet their deadlines) that
+equals the total capacity of all processors.
 
 \subsubsection{LLREF}
+LLREF was firstly introduced by Cho et al \cite{cho2006optimal}. LLREF was
+designed based on  a novel abstraction for reasoning over task execution
+behavior on multiprocessors, called Time and Local Execution Time Domain
+Plane (T-L Plane).
 
 \subsubsection{EDZL}
+
+
+Michele's work \cite{cirinei2007edzl} gave a more comprehensive analysis about
+the schedulability of EDZL.
+
+\subsection{Summary}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
