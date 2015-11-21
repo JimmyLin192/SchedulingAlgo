@@ -70,7 +70,7 @@
 %%   sort&compress   -  like sort, but also compresses numerical citations
 %%   compress - compresses without sorting
 %%
-%% \biboptions{comma,round}
+% \biboptions{comma,round}
 
 % \biboptions{}
 
@@ -102,7 +102,7 @@
 %% \address{Address\fnref{label3}}
 %% \fntext[label3]{}
 
-\title{A Survey of Multi-Processor Scheduling For Hard Real-Time Systems}
+\title{A Brief Survey of Multi-Processor Scheduling For Hard Real-Time Systems}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
@@ -194,35 +194,37 @@ real-time scheduling.
 % what is global scheduling 
 
 % advantages (comparison to partitioned scheduling)
-The partitioned scheduling paradigm has several advantages
-over the global approach. First, once tasks are allocated
-to processors, the multiprocessor real-time scheduling
-problem becomes a set of single processor real-time
-scheduling problems, one for each processor, which has
-been well-studied and for which optimal algorithms exist.
-Second, not migrating tasks at run-time means reduced runtime
-overhead as opposed to migrating tasks that may suffer
-cache misses on the newly assigned processor. If the task set
-is fixed and known a-priori, the partitioned approach provides
-appropriate solutions
+The global scheduling paradigm has advantages over the partitioned approach. 
+First of all, if tasks can join and leave the system at run-time, then it may be
+necessary to reallocate tasks to processors in the partitioned approach.
+In addition, the partitioned approach cannot produce optimal
+real-time schedules -- one that meets all task deadlines
+when task utilization demand does not exceed the total processor
+capacity -- for periodic task sets, since the partitioning
+problem is analogous to the bin-packing problem which is known to be NP-hard
+in the strong sense. 
+On top of that, in some embedded processor architectures with no cache and
+simpler structures, the overhead of migration has a lower
+impact on the performance. 
+Finally, global scheduling can theoretically contribute to an increased
+understanding of the properties and behaviors of real-time scheduling
+algorithms for multiprocessors.
 
 % disadvantages
-The global scheduling paradigm also has advantages,
-over the partitioned approach. First, if tasks can join and
-leave the system at run-time, then it may be necessary to reallocate
-tasks to processors in the partitioned approach [3].
-Second, the partitioned approach cannot produce optimal
-real-time schedules — one that meets all task deadlines
-when task utilization demand does not exceed the total processor
-capacity — for periodic task sets [14], since the partitioning
-problem is analogous to the bin-packing problem
-which is known to be NP-hard in the strong sense. Third, in
-some embedded processor architectures with no cache and
-simpler structures, the overhead of migration has a lower
-impact on the performance [3]. Finally, global scheduling
-can theoretically contribute to an increased understanding
-of the properties and behaviors of real-time scheduling algorithms
-for multiprocessors.
+The global scheduling paradigm has also several disadvantages, compared with
+the partitioned approach. 
+Firstly, global scheduling strategies are much more complicated to implement than
+partitioned scheduling. 
+In other words, for the partitioned approach, once a set of tasks are allocated
+to processors, the multiprocessor real-time scheduling problem becomes a
+collection of single processor real-time scheduling problems.  The ease of
+programming partitioned scheduling is obvious since the single processor
+scheduling problem has already been well-studied and optimal algorithms with
+easy implementations already exist.
+Secondly, migrating tasks at run-time means more runtime overhead in that
+migrating tasks may suffer cache misses on the newly assigned processor. If
+the task set is fixed and known in advanced, it is obvious that the partitioned
+approach provides more appropriate solutions.
 
 % catogries of global scheduling algorithms
 
@@ -249,8 +251,8 @@ rise to excessive overheads in potential.
 
 The following part of this subsection will provide brief summary of three
 classic global dynamic priority scheduling algorithms. They are respectively 
-Proportionate Fairness Algorithm (PFair),  Largest Local Remaining Execution
-First (LLREF), and Earliest Deadline until Zero Laxity (EDZL). 
+Proportionate Fairness Algorithm (PFair), and Largest Local Remaining Execution
+First (LLREF). 
 
 \subsubsection{PFair}
 Baruah et al \cite{baruah1996proportionate} introduced Proportionate Fairness
@@ -266,12 +268,6 @@ LLREF was firstly introduced by Cho et al \cite{cho2006optimal}. LLREF was
 designed based on  a novel abstraction for reasoning over task execution
 behavior on multiprocessors, called Time and Local Execution Time Domain
 Plane (T-L Plane).
-
-\subsubsection{EDZL}
-
-
-Michele's work \cite{cirinei2007edzl} gave a more comprehensive analysis about
-the schedulability of EDZL.
 
 \subsection{Summary}
 
