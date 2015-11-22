@@ -277,10 +277,22 @@ et al \cite{jiang2005proportional}. Besides, Bonald's paper
 fairness as well as max-min fairness and balanced fairness. 
 
 \subsubsection{LLREF}
-LLREF was firstly introduced by Cho et al \cite{cho2006optimal}. LLREF was
-designed based on  a novel abstraction for reasoning over task execution
-behavior on multiprocessors, called Time and Local Execution Time Domain
-Plane (T-L Plane).
+LLREF was firstly introduced by Cho et al \cite{cho2006optimal}. Similar to
+PFair class of algorithms, LLREF is also based on the fluid scheduling model,
+where each task executes at a constant rate at all times.
+The principal idea of LLREF is that given $M$ processors,  $M$ largest local
+remaining execution time tasks are selected first for every secondary event. 
+This is also called the LLREF scheduling policy.
+To reason over task execution behavior on multiprocessors, a novel abstraction
+ called Time and Local Execution Time Domain Plane (T-L Plane) was developed.
+
+ This algorithm divides the schedule into Time and Local execution time planes
+ (TL-planes), which are determined by task deadlines. The algorithm schedules
+ tasks by creating smaller “local” jobs within each TL-plane. The only
+ parameters considered by the algorithm during a TL-plane are the parameters
+ of the local jobs. When a TL-plane completes, the next TL-plane is started.
+ The duration of each TL-plane is the amount of time between consecutive
+ deadlines.
 
 \subsection{Summary}
 % advantages (comparison to partitioned scheduling)
@@ -357,7 +369,6 @@ approach provides more appropriate solutions.
 % \bibitem{}
 
 % \end{thebibliography}
-
 
 \end{document}
 
