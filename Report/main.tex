@@ -176,17 +176,34 @@ System \sep Scheduling Algorithm \sep Task Management
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Partitioned Scheduling} \label{S:3}
-In this section, we will review some partitioned approaches to multiprocessor real-time scheduling.
+In this section, we will review some partitioned approaches to multiprocessor real-time scheduling, and then compare their performance.
 \subsection{Characteristic of Partitioned Scheduling}
-\subsection{RMNF}
-\subsection{RMFF}
-\subsection{EDF-FF}
-\subsection{EDF-BF}
-\subsection{Comparision}
+Partitioned scheduling provides capability for performing parallel processing and also for automation of batch execution of multiple processes. It can improve performance by breaking down a process that works on a large data set, to multiple parallel processes that work on smaller data sets, each contains part of the original data set. The general solution involves two algorithms: one to assign tasks to processors, known as the allocation, the other to schedule tasks that are assigned to each individual processor. The partitioning strategy also requires that all occurrences of a task to be executed on the same processor.
+
+One main advantage of partitioned scheduling is that, after the allocation of tasks to processors, we can apply the optimal real-time scheduling techniques and analyses for uni-processor systems to each individual processor. 
+
+Comparing to the global scheduling, partitioned scheduling also has some advantages. 
+\begin{itemize}
+\item A task that overruns its worst-case execution time will not affect tasks on other processors.
+\item There is no migration cost as each task only runs on a single processor.
+\item For each processor, the run-queue is much smaller comparing to the single global queue in the global scheduling, thus the overheads of managing the run-queue can be neglected. 
+\end{itemize}
+
+However, the main disadvantage of the partitioned approach is that the allocation problem is analogous to a NP-Hard problem. 
+
+\subsection{Rate Monotonic Scheduling with First-Fit Task Allocation (RMFF)}
+
+\subsection{Rate Monotonic Scheduling with Next-Fit Task Allocation (RMNF)}
+
+\subsection{Earliest Deadline First Scheduling with First-Fit Task Allocation (EDF-FF)}
+
+\subsection{Earliest Deadline First Scheduling with Best-Fit Task Allocation (EDF-BF)}
+
+\subsection{Comparison}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\section{Global Scheduling} \label{S:3}
+\section{Global Scheduling} \label{S:4}
 In this section, we will dive into another branch of scheduling strategies --
 global approaches to multiprocessor real-time scheduling.
 
@@ -329,9 +346,9 @@ approach provides more appropriate solutions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Hybrid Approaches} \label{S:4}
+\section{Hybrid Approaches} \label{S:5}
 
-\section{Conclusions} \label{S:5}
+\section{Conclusions} \label{S:6}
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
@@ -406,3 +423,4 @@ approach provides more appropriate solutions.
 %j\item Numbered list item one
 %j\item Numbered list item two
 %j\end{enumerate}
+
