@@ -151,28 +151,96 @@ System \sep Scheduling Algorithm \sep Task Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} \label{S:1}
 
+Real-time systems has become prevalent in diverse application areas, such as traffic controls, embedded automotive electronics, networked multimedia etc. Typically, a real-time system comprises a real-time computer system and a controlled object, which are connected through sensors, actuators and some other input-output interfaces. The controlling real-time computer reacts/responds to its controlled object based on the currently known information about the object. For example, a real-time computer controls a device according to the data read by sensors at periodic intervals and responds by sending signals to actuators within a time bound. (Figure?)
 
+The purpose of real-time systems is to meet various timing constraints imposed on it by its external world during the operation of the system.
+The instant at which a response from the controlling system must be delivered to its controlled system is called a deadline. A deadline can be classified into three categories\cite{mohammadi2005scheduling}:
 
-\subsection{Problem Defintion}
+\begin{itemize}
+\item Soft Deadline: the response still has effectiveness even after the deadline has passed. However the later the execution of a task after the deadline, the more penalty it pays.
+\item Firm Deadline: the response has no utilize if the deadline has passed. Moreover the earlier the execution of a task before a firm deadline, the more rewards it gains.
 
-\subsection{Preview Of Related works}
+\item Hard Deadline: a task must complete its computation by the deadline, otherwise a catastrophe could happen.
 
-\subsection{Paper Organization}
-0. Background and introduction
+\end{itemize}
 
-1. System Models
+Commands and Control systems, Air traffic control systems are examples for hard real-time systems. On-line transaction systems, airline reservation systems are soft real-time systems\cite{davis2011survey}. Such a system is called embedded real-time system if it is a component of a larger system.
 
-2. Partitioned Scheduling
+Companies are motivated to build embedded real-time systems by their advanced effectiveness and flexibility. In order to beat the competition in industries, they need to satisfy customers needs and lower associated costs to the maximum extent possible. Such aspiration has resulted in a rapid progress in the area of embedded real-time technology. For instance, silicon vendors used to increase processor performance by concentrating on the miniaturization needed. However this approach has led to problems with both high power consumption and excessive heat dissipation\cite{davis2011survey}. Thus using multiprocessor platforms for high-end real-time applications is an increasing trend toward instead\cite{davis2011survey}.
 
-3. Global Scheduling
+Multiprocessor systems can be classified into three categories from the perspectives of scheduling\cite{davis2011survey}:
 
-4. Hybrid Approach
+\begin{itemize}
+\item Heterogeneous: processors in the system are different. Not all tasks may be able to
+execute on all processors and the execution rate of a task depends on both the processor and the task.
 
-5. Conclusion and Discussion
+\item Homogeneous: processors in the system are identical. The execution rate of all tasks is the same on all processors. Thus it depends only on the task.
+
+\item Uniform: the execution rate of a task depends only on the speed of processors. For example a processor with speed 2 will execute all tasks at exactly twice the rate of a processor with speed 1.
+\end{itemize}
+
+In this paper we are concerned with scheduling algorithms of \textbf{\textit homogeneous} multiprocessor  for \textbf{\textit hard} real-time system. The paper is organized as follows: section 2 is problem statement, section 3 is key concepts, section 4 is performance evaluation. we will describe the partitioned scheduling and global scheduling in detail in section 5 and section 6, respectively. A conclusion is given at the end of this paper (need to revise).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{System Models} \label{S:2}
-\subsection{}
+\section{Preliminaries} \label{S:2}
+
+This section reviews the fundamental terminologies and notations used in multiprocessor scheduling algorithms.
+
+\subsection{Multiprocessor Scheduling}
+
+In computer science, multiprocessor scheduling is an NP-hard optimization problem[wiki]. The problem can be described as "given a set $J$ of jobs where job $j_i$ has length $l_i$ and a number of processors $m$, what is the minimum possible time required to schedule all jobs in J on m processors such that none overlap?"\cite{garey1979computers}. Clearly multiprocessor schedulers should concern with the allocation of the resources and the satisfaction of timing constraints\cite{davis2011survey}:
+
+\begin{itemize}
+
+\item Resource Allocation: on which processor a task executes.
+\item Propriety Determination: when and in what order, with respect to jobs of other tasks, each job executes so that all jobs can be finished before their deadlines.
+
+\end{itemize}
+
+Then real-time scheduling algorithms for multiprocessor systems can be classified from perspectives of allocation changes and priority changes (referred to as migration-based and priority-based classifications \cite{carpenter2004categorization}).
+
+\subsection{Classification of Real-time Scheduling Algorithms}
+
+\begin{figure}
+\centering
+\includegraphics[width=3.5in]{classification}
+\caption{Taxonomy of Real-time Scheduling Algorithms}
+\label{classification}
+\end{figure}
+
+Real-Time scheduling can be categorized into hard scheduling and soft scheduling based on the types of deadlines. The hard real-time scheduling can be further classified into two types: static and dynamic. A static scheduling generates its scheduling decisions off-line according to the prior information of the jobs in a task. The decisions are made at compile time, thus its run-time overhead is small. By contrast, the scheduling decisions are made at run time in dynamic scheduling system, which leads to significant overheads. Furthermore, both dynamic scheduling and static scheduling can have preemptive or nonpreemptive scheduling:
+
+\begin{itemize}
+\item Preemptive: the currently executing task can be preempted by a higher priority task at anytime
+\item Nonpreemptive: the currently executing task can not be preempted until completion
+\end{itemize}
+
+In this paper, we are mainly concerned with dynamic preemptive scheduling algorithms. Figure \ref{classification} illustrates a rough taxonomy of real-time scheduling algorithms.
+
+
+More specifically, the dynamic scheduling algorithm can be classified by its priority policy\cite{davis2011survey}:
+
+\begin{itemize}
+\item Fixed task-level priority: the jobs of a task has a single fixed priority, such as Rate Monotonic RM algorithm
+
+\item Fixed job-level priority: the jobs of a task may have different priorities, but each job has a single static priority, such earliest deadline first (EDF) scheduling.
+
+\item Dynamic priority: A single job may have different priorities at different times, such as least laxity first (LLF) scheduling.
+\end{itemize}
+
+
+From the respective of allocation policy, the real-time scheduling algorithms for multiprocessor systems can be also classified as follows\cite{davis2011survey}:
+
+\begin{itemize}
+\item Non-migration: the jobs of a task must execute on one single processor and migration is not permitted.
+
+\item Task-level migration: the jobs of a task may be allocated to different processors, however, each job can only execute on one single processor.
+
+\item Job-level migration: a single job can be executed on different processors, however, no parallel execution of a job is permitted.
+\end{itemize}
+
+Scheduling algorithms without migrations are referred partitioned algorithms while those that permits migrations are referred as global algorithms. These two algorithms have been discussed in detail in section 3 and section 4, respectively.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Partitioned Scheduling} \label{S:3}
