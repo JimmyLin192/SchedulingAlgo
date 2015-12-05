@@ -191,9 +191,20 @@ Comparing to the global scheduling, partitioned scheduling also has some advanta
 
 However, the main disadvantage of the partitioned approach is that the allocation problem is analogous to a NP-Hard problem. 
 
-\subsection{Rate Monotonic Scheduling with First-Fit Task Allocation (RMFF)}
+\subsection{Rate Monotonic Next Fit Scheduling (RMNF)}
+The rate-monotonic-next-fit scheduling \cite{dhall1978real} is a partitioned scheduling algorithm for multiprocessors systems. According to this algorithm, tasks are first sorted in the descending order of their request rates. The scheduling scheme is that:
+\begin{enumerate}
+\item Starts from the first task i, and the first processor j. 
+\item Assign the task i to the processor j if j meets the requirement that together with all tasks that have been assigned to the processor j, tasks can be feasibly scheduled on processor j according to the rate-monotonic scheduling algorithm for a single processor. Otherwise, assign i to j + 1 and increase j by 1. 
+\item Get the next task and repeat the previous two steps, unless there is no task left.
+\end{enumerate}
 
-\subsection{Rate Monotonic Scheduling with Next-Fit Task Allocation (RMNF)}
+Let N be the number of processors required to be feasibly schedule a set of task by the RMNF algorithm, and $N_0$ be the minimum number of processors required to feasibly schedule the same set of tasks. Then as $N_0$ approaches infinity, we can get that \cite{dhall1978real}
+\begin{equation}
+    2.4 \leq \frac{N}{N_0} \leq 2.67 
+\end{equation}
+
+\subsection{Rate Monotonic First-Fit Scheduling (RMFF)}
 
 \subsection{Earliest Deadline First Scheduling with First-Fit Task Allocation (EDF-FF)}
 
