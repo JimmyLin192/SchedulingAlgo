@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: model1-num-names.bst
+Database file #1: main.bib
+Warning--empty journal in oh1993tight
+You've used 14 entries,
+            2616 wiz_defined-function locations,
+            670 strings with 6909 characters,
+and the built_in function-call counts, 8525 in all, are:
+= -- 693
+> -- 354
+< -- 11
++ -- 141
+- -- 117
+* -- 1032
+:= -- 1289
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 109
+chr.to.int$ -- 14
+cite$ -- 15
+duplicate$ -- 534
+empty$ -- 530
+format.name$ -- 175
+if$ -- 1548
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 115
+newline$ -- 75
+num.names$ -- 56
+pop$ -- 118
+preamble$ -- 1
+purify$ -- 109
+quote$ -- 0
+skip$ -- 166
+stack$ -- 0
+substring$ -- 435
+swap$ -- 475
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 126
+warning$ -- 1
+while$ -- 65
+width$ -- 0
+write$ -- 188
+(There was 1 warning)

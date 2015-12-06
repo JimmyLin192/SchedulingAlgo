@@ -1,0 +1,112 @@
+\begin{thebibliography}{14}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Liu and Layland(1973)}]{liu1973scheduling}
+\bibinfo{author}{C.~L. Liu}, \bibinfo{author}{J.~W. Layland},
+\newblock \bibinfo{title}{Scheduling algorithms for multiprogramming in a
+  hard-real-time environment},
+\newblock \bibinfo{journal}{Journal of the ACM (JACM)} \bibinfo{volume}{20}
+  (\bibinfo{year}{1973}) \bibinfo{pages}{46--61}.
+%Type = Article
+\bibitem[{Sha et~al.(1990)Sha, Rajkumar, and Lehoczky}]{sha1990priority}
+\bibinfo{author}{L.~Sha}, \bibinfo{author}{R.~Rajkumar}, \bibinfo{author}{J.~P.
+  Lehoczky},
+\newblock \bibinfo{title}{Priority inheritance protocols: An approach to
+  real-time synchronization},
+\newblock \bibinfo{journal}{Computers, IEEE Transactions on}
+  \bibinfo{volume}{39} (\bibinfo{year}{1990}) \bibinfo{pages}{1175--1185}.
+%Type = Article
+\bibitem[{Mohammadi and Akl(2005)}]{mohammadi2005scheduling}
+\bibinfo{author}{A.~Mohammadi}, \bibinfo{author}{S.~G. Akl},
+\newblock \bibinfo{title}{Scheduling algorithms for real-time systems},
+\newblock \bibinfo{journal}{School of Computing, Queens University}
+  (\bibinfo{year}{2005}).
+%Type = Article
+\bibitem[{Davis and Burns(2011)}]{davis2011survey}
+\bibinfo{author}{R.~I. Davis}, \bibinfo{author}{A.~Burns},
+\newblock \bibinfo{title}{A survey of hard real-time scheduling for
+  multiprocessor systems},
+\newblock \bibinfo{journal}{ACM Computing Surveys (CSUR)} \bibinfo{volume}{43}
+  (\bibinfo{year}{2011}) \bibinfo{pages}{35}.
+%Type = Article
+\bibitem[{Garey and Johnson(1979)}]{garey1979computers}
+\bibinfo{author}{M.~R. Garey}, \bibinfo{author}{D.~S. Johnson},
+\newblock \bibinfo{title}{Computers and intractability: a guide to the theory
+  of np-completeness. 1979},
+\newblock \bibinfo{journal}{San Francisco, LA: Freeman}
+  (\bibinfo{year}{1979}).
+%Type = Article
+\bibitem[{Carpenter et~al.(2004)Carpenter, Funk, Holman, Srinivasan, Anderson,
+  and Baruah}]{carpenter2004categorization}
+\bibinfo{author}{J.~Carpenter}, \bibinfo{author}{S.~Funk},
+  \bibinfo{author}{P.~Holman}, \bibinfo{author}{A.~Srinivasan},
+  \bibinfo{author}{J.~Anderson}, \bibinfo{author}{S.~Baruah},
+\newblock \bibinfo{title}{A categorization of real-time multiprocessor
+  scheduling problems and algorithms},
+\newblock \bibinfo{journal}{Handbook on scheduling algorithms, methods, and
+  models}  (\bibinfo{year}{2004}) \bibinfo{pages}{30--1}.
+%Type = Article
+\bibitem[{Dhall and Liu(1978)}]{dhall1978real}
+\bibinfo{author}{S.~K. Dhall}, \bibinfo{author}{C.~Liu},
+\newblock \bibinfo{title}{On a real-time scheduling problem},
+\newblock \bibinfo{journal}{Operations research} \bibinfo{volume}{26}
+  (\bibinfo{year}{1978}) \bibinfo{pages}{127--140}.
+%Type = Article
+\bibitem[{Oh and Son(1993)}]{oh1993tight}
+\bibinfo{author}{Y.~Oh}, \bibinfo{author}{S.~H. Son},
+\newblock \bibinfo{title}{Tight performance bounds of heuristics for a
+  real-time scheduling problem}  (\bibinfo{year}{1993}).
+%Type = Article
+\bibitem[{Khemka and Shyamasundar(1997)}]{khemka1997optimal}
+\bibinfo{author}{A.~Khemka}, \bibinfo{author}{R.~Shyamasundar},
+\newblock \bibinfo{title}{An optimal multiprocessor real-time scheduling
+  algorithm},
+\newblock \bibinfo{journal}{Journal of parallel and distributed computing}
+  \bibinfo{volume}{43} (\bibinfo{year}{1997}) \bibinfo{pages}{37--45}.
+%Type = Inproceedings
+\bibitem[{Cho et~al.(2006)Cho, Ravindran, and Jensen}]{cho2006optimal}
+\bibinfo{author}{H.~Cho}, \bibinfo{author}{B.~Ravindran},
+  \bibinfo{author}{E.~D. Jensen},
+\newblock \bibinfo{title}{An optimal real-time scheduling algorithm for
+  multiprocessors},
+\newblock in: \bibinfo{booktitle}{Real-Time Systems Symposium, 2006. RTSS'06.
+  27th IEEE International}, \bibinfo{organization}{IEEE}, pp.
+  \bibinfo{pages}{101--110}.
+%Type = Article
+\bibitem[{Baruah et~al.(1996)Baruah, Cohen, Plaxton, and
+  Varvel}]{baruah1996proportionate}
+\bibinfo{author}{S.~K. Baruah}, \bibinfo{author}{N.~K. Cohen},
+  \bibinfo{author}{C.~G. Plaxton}, \bibinfo{author}{D.~A. Varvel},
+\newblock \bibinfo{title}{Proportionate progress: A notion of fairness in
+  resource allocation},
+\newblock \bibinfo{journal}{Algorithmica} \bibinfo{volume}{15}
+  (\bibinfo{year}{1996}) \bibinfo{pages}{600--625}.
+%Type = Article
+\bibitem[{Kelly et~al.(1998)Kelly, Maulloo, and Tan}]{kelly1998rate}
+\bibinfo{author}{F.~P. Kelly}, \bibinfo{author}{A.~K. Maulloo},
+  \bibinfo{author}{D.~K. Tan},
+\newblock \bibinfo{title}{Rate control for communication networks: shadow
+  prices, proportional fairness and stability},
+\newblock \bibinfo{journal}{Journal of the Operational Research society}
+  (\bibinfo{year}{1998}) \bibinfo{pages}{237--252}.
+%Type = Inproceedings
+\bibitem[{Jiang and Liew(2005)}]{jiang2005proportional}
+\bibinfo{author}{L.~B. Jiang}, \bibinfo{author}{S.~C. Liew},
+\newblock \bibinfo{title}{Proportional fairness in wireless lans and ad hoc
+  networks},
+\newblock in: \bibinfo{booktitle}{Wireless Communications and Networking
+  Conference, 2005 IEEE}, volume~\bibinfo{volume}{3},
+  \bibinfo{organization}{IEEE}, pp. \bibinfo{pages}{1551--1556}.
+%Type = Article
+\bibitem[{Bonald et~al.(2006)Bonald, Massouli{\'e}, Proutiere, and
+  Virtamo}]{bonald2006queueing}
+\bibinfo{author}{T.~Bonald}, \bibinfo{author}{L.~Massouli{\'e}},
+  \bibinfo{author}{A.~Proutiere}, \bibinfo{author}{J.~Virtamo},
+\newblock \bibinfo{title}{A queueing analysis of max-min fairness, proportional
+  fairness and balanced fairness},
+\newblock \bibinfo{journal}{Queueing systems} \bibinfo{volume}{53}
+  (\bibinfo{year}{2006}) \bibinfo{pages}{65--84}.
+
+\end{thebibliography}
