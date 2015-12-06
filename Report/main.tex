@@ -127,8 +127,8 @@ the context of multiple processors. The very first section outlines the
 background of multi-processor scheduling problems, as well as system models,
 terminology, and the metrics of scheduling algorithms. After that, partitioned
 scheduling and global scheduling, as the primary objects of our research, will
-be fully explored. Moreover, we will also give brief sketch to the hybrid
-approaches of partitioned scheduling and global scheduling. 
+be fully explored. Lastly, we conclude our exploration in the topic of
+scheduling algorithm.  
 \end{abstract}
 
 \begin{keyword}
@@ -151,14 +151,19 @@ System \sep Scheduling Algorithm \sep Task Management
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} \label{S:1}
 
-Real-time systems has become prevalent in diverse application areas, such as traffic controls, embedded automotive electronics, networked multimedia etc. Typically, a real-time system comprises a real-time computer system and a controlled object, which are connected through sensors, actuators and some other input-output interfaces. The controlling real-time computer reacts/responds to its controlled object based on the currently known information about the object. For example, a real-time computer controls a device according to the data read by sensors at periodic intervals and responds by sending signals to actuators within a time bound. (Figure?)
+Real-time systems have become prevalent in diverse application areas, such as traffic controls, embedded automotive electronics, networked multimedia etc. Typically, a real-time system comprises a real-time computer system and a controlled object, which are connected through sensors, actuators and some other input-output interfaces. The controlling real-time computer reacts/responds to its controlled object based on the currently known information about the object. For example, a real-time computer controls a device according to the data read by sensors at periodic intervals and responds by sending signals to actuators within a time bound. 
 
-The purpose of real-time systems is to meet various timing constraints imposed on it by its external world during the operation of the system.
+The purpose of real-time systems is to meet various timing constraints imposed
+on them by its external world during the operation of the system.
 The instant at which a response from the controlling system must be delivered to its controlled system is called a deadline. A deadline can be classified into three categories\cite{mohammadi2005scheduling}:
 
 \begin{itemize}
-\item Soft Deadline: the response still has effectiveness even after the deadline has passed. However the later the execution of a task after the deadline, the more penalty it pays.
-\item Firm Deadline: the response has no utilize if the deadline has passed. Moreover the earlier the execution of a task before a firm deadline, the more rewards it gains.
+\item Soft Deadline: the response still has effectiveness even after the
+    deadline has passed. However, the later the execution of a task after the
+    deadline, the more penalty it pays.
+\item Firm Deadline: the response has no utilize if the deadline has passed.
+    Moreover, the earlier the execution of a task before a firm deadline, the
+    more rewards it gains.
 
 \item Hard Deadline: a task must complete its computation by the deadline, otherwise a catastrophe could happen.
 
@@ -166,7 +171,13 @@ The instant at which a response from the controlling system must be delivered to
 
 Commands and Control systems, Air traffic control systems are examples for hard real-time systems. On-line transaction systems, airline reservation systems are soft real-time systems\cite{davis2011survey}. Such a system is called embedded real-time system if it is a component of a larger system.
 
-Companies are motivated to build embedded real-time systems by their advanced effectiveness and flexibility. In order to beat the competition in industries, they need to satisfy customers needs and lower associated costs to the maximum extent possible. Such aspiration has resulted in a rapid progress in the area of embedded real-time technology. For instance, silicon vendors used to increase processor performance by concentrating on the miniaturization needed. However this approach has led to problems with both high power consumption and excessive heat dissipation\cite{davis2011survey}. Thus using multiprocessor platforms for high-end real-time applications is an increasing trend toward instead\cite{davis2011survey}.
+Companies are motivated to build embedded real-time systems by their advanced
+effectiveness and flexibility. In order to beat the competition in industries,
+they need to satisfy customers needs and lower associated costs to the maximum
+extent possible. Such aspiration has resulted in a rapid progress in the area
+of embedded real-time technology. For instance, silicon vendors used to
+increase processor performance by concentrating on the miniaturization needed.
+However, this approach has led to problems with both high power consumption and excessive heat dissipation\cite{davis2011survey}. Thus using multiprocessor platforms for high-end real-time applications is an increasing trend toward instead\cite{davis2011survey}.
 
 Multiprocessor systems can be classified into three categories from the perspectives of scheduling\cite{davis2011survey}:
 
@@ -176,10 +187,12 @@ execute on all processors and the execution rate of a task depends on both the p
 
 \item Homogeneous: processors in the system are identical. The execution rate of all tasks is the same on all processors. Thus it depends only on the task.
 
-\item Uniform: the execution rate of a task depends only on the speed of processors. For example a processor with speed 2 will execute all tasks at exactly twice the rate of a processor with speed 1.
+\item Uniform: the execution rate of a task depends only on the speed of
+    processors. For example, a processor with speed 2 will execute all tasks
+    at exactly twice the rate of a processor with speed 1.
 \end{itemize}
 
-In this paper we are concerned with scheduling algorithms of \textbf{\textit homogeneous} multiprocessor  for \textbf{\textit hard} real-time system. The paper is organized as follows: section 2 is problem statement, section 3 is key concepts, section 4 is performance evaluation. we will describe the partitioned scheduling and global scheduling in detail in section 5 and section 6, respectively. A conclusion is given at the end of this paper (need to revise).
+The paper is organized as follows: section 2 reviews the foundational concepts in multiprocessor real-time scheduling algorithm. Section 3 and section 4 discuss the partitioned scheduling and global scheduling in detail, respectively. A conclusion is given at the end of this paper.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries} \label{S:2}
@@ -221,7 +234,7 @@ In this paper, we are mainly concerned with dynamic preemptive scheduling algori
 More specifically, the dynamic scheduling algorithm can be classified by its priority policy\cite{davis2011survey}:
 
 \begin{itemize}
-\item Fixed task-level priority: the jobs of a task has a single fixed priority, such as Rate Monotonic RM algorithm
+\item Fixed task-level priority: the jobs of a task have a single fixed priority, such as Rate Monotonic RM algorithm
 
 \item Fixed job-level priority: the jobs of a task may have different priorities, but each job has a single static priority, such earliest deadline first (EDF) scheduling.
 
@@ -271,8 +284,8 @@ Some other important terminologies realted to taskset are\cite{davis2011survey}:
 The notations that are used frequently in multiprocessing real-time scheduling and in this paper are as follows\cite{davis2011survey}:
 
 \begin{itemize}
-\item $\pi_i$: task i at priority level i
-\item $B_i$: blocking time at priority level i
+\item $\pi_i$: task $i$ at priority level $i$
+\item $B_i$: blocking time at priority level $i$
 \item $C_i$: worst-case execution time of task $\pi_i$
 \item $D_i$: relative deadline of task $\pi_i$
 \item $\delta_i$: density of task $pi_i$ , $\delta_i = C_i/ min(D_i , T_i )$
@@ -284,17 +297,18 @@ The notations that are used frequently in multiprocessing real-time scheduling a
 \item $load(\pi)$: processor load of taskset $\pi$
 \item $load(\pi, k)$: processor load of taskset $\pi$ , due to tasks of priority higher than or equal to $k$
 \item $m$: number of processors
-\item $M_A(\pi)$: minimum number of processors needed to schedule taskset $\pi$ using scheduling algorithm A
+\item $M_A(\pi)$: minimum number of processors needed to schedule taskset
+    $\pi$ using scheduling algorithm $A$ 
 \item $n$: number of tasks
 \item $N$: number of jobs (typically in the hyperperiod of the taskset)
 \item $R_i$: worst-case response time of task $\pi$
-\item $R_A$: approximation ratio for scheduling algorithm A
+\item $R_A$: approximation ratio for scheduling algorithm $A$
 \item $t$: time
 \item $T_i$: minimum interarrival time of task $\pi$
 \item $u_i$: utilization of task $\pi$
 \item $u_{max}$: maximum utilization of any task in the taskset
 \item $u_{sum}$: taskset utilization
-\item $U_A$: utilization upper bound for scheduling algorithm A
+\item $U_A$: utilization upper bound for scheduling algorithm $A$
 \end{itemize}
 
 
@@ -334,8 +348,8 @@ Let N be the number of processors required to be feasibly schedule a set of task
 \subsection{Rate Monotonic First-Fit Scheduling (RMFF)}
 The rate-monotonic-first-fit scheduling algorithm \cite{dhall1978real} is similar to the RMNF. According to the RMFF, the tasks are first sorted in the descending order of their request rates. We will use a counter N to be the number of processors required for scheduling the given tasks. N is first initiated to 1. The scheduling scheme is that:
 \begin{enumerate}
-\item Starts from the first task i. 
-\item Starts from the lowest-indexed processor. Assign the task i to the first processor that meets the requirement that together with all tasks that have been assigned to the processor, tasks can be feasibly scheduled on the processor according to the rate-monotonic scheduling algorithm for a single processor. If no processor with index less than N meets the requirement, increase N by 1. 
+\item Starts from the first task $i$. 
+\item Starts from the lowest-indexed processor. Assign the task $i$ to the first processor that meets the requirement that together with all tasks that have been assigned to the processor, tasks can be feasibly scheduled on the processor according to the rate-monotonic scheduling algorithm for a single processor. If no processor with index less than N meets the requirement, increase N by 1. 
 \item Get the next task and repeat the previous step, unless there is no task left.
 \end{enumerate}
 
